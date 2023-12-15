@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:estagio_projeto/routes.dart';
 import 'package:estagio_projeto/screens/promocoes/cardProdutos.dart';
 import "package:flutter/material.dart";
@@ -204,7 +202,8 @@ Widget buildDrawer(BuildContext context) {
           'Tela Home',
           () {
             Navigator.pop(context);
-            Navigator.pushReplacementNamed(context, Routes.home);
+            Navigator.pushNamedAndRemoveUntil(
+                context, Routes.home, (route) => false);
           },
         ),
         buildDrawerItem(

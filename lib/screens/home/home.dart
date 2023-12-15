@@ -1,4 +1,3 @@
-import 'package:estagio_projeto/main.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets.dart';

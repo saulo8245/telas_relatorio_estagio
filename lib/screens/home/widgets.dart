@@ -1,4 +1,3 @@
-import 'package:estagio_projeto/screens/home/home.dart';
 import 'package:estagio_projeto/screens/promocoes/promocoesScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
