@@ -3,6 +3,8 @@ import 'package:estagio_projeto/screens/promocoes/promocoesScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+import '../../routes.dart';
+
 Widget buildRectangle(Color color, double width, double height) {
   return Container(
     width: width,
@@ -19,10 +21,9 @@ Widget buildInteractiveRetctangle(BuildContext context, Color color,
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(message)),
       );
-      Navigator.push(
-        context, //ALTERAR DE HOME PARA a TELA DE PROMOÇAO
-        MaterialPageRoute(builder: (context) => Home()),
-      );
+
+      // Navega para a tela Home e remove todas as telas acima dela na pilha
+      Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
     },
     child: buildRectangle(color, width, height),
   );

@@ -12,9 +12,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Home Page',
-      initialRoute: Routes.home,
-      onGenerateRoute: Routes.generateRoute,
+      onGenerateRoute: (settings) {
+        // Verifica se estamos na rota inicial
+        if (settings.name == Routes.home) {
+          // Remove todas as telas anteriores da pilha e vai para a tela home
+          WidgetsBinding.instance!.addPostFrameCallback((_) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, Routes.home, (route) => false);
+          });
+        }
+        // Chama o método generateRoute da sua classe Routes
+        return Routes.generateRoute(settings);
+      },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
