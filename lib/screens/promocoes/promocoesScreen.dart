@@ -84,7 +84,7 @@ class _PromocoesScreen extends State<PromocoesScreen> {
                 _scrollController, _loading, _loadProducts),
           ),
         ),
-        bottomNavigationBar: buildBottomNavigationBar(),
+        bottomNavigationBar: buildBottomNavigationBar(context),
       ),
     );
   }

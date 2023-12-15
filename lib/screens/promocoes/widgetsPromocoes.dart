@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:estagio_projeto/routes.dart';
 import 'package:estagio_projeto/screens/promocoes/cardProdutos.dart';
 import "package:flutter/material.dart";
 import 'package:carousel_slider/carousel_slider.dart';
@@ -200,31 +201,24 @@ Widget buildDrawer(BuildContext context) {
     child: ListView(
       children: [
         buildDrawerItem(
-          'TELA HOME',
+          'Tela Home',
           () {
             Navigator.pop(context);
-            Navigator.pushReplacementNamed(context, '/home');
+            Navigator.pushReplacementNamed(context, Routes.home);
           },
         ),
         buildDrawerItem(
-          'TELA Login',
+          'Tela Login',
           () {
             Navigator.pop(context);
-            Navigator.pushReplacementNamed(context, '/Login');
+            Navigator.pushReplacementNamed(context, Routes.login);
           },
         ),
         buildDrawerItem(
-          'TELA OFERTAS',
+          'Tela Ofertas',
           () {
             Navigator.pop(context);
-            Navigator.pushReplacementNamed(context, '/ofertas');
-          },
-        ),
-        buildDrawerItem(
-          'TELA CARRINHO',
-          () {
-            Navigator.pop(context);
-            Navigator.pushReplacementNamed(context, '/carrinho');
+            Navigator.pushReplacementNamed(context, Routes.promocoes);
           },
         ),
       ],
@@ -242,7 +236,7 @@ Widget buildDrawerItem(String title, VoidCallback onTap) {
   );
 }
 
-Widget buildBottomNavigationBar() {
+Widget buildBottomNavigationBar(BuildContext context) {
   return BottomNavigationBar(
     items: [
       BottomNavigationBarItem(
@@ -255,5 +249,18 @@ Widget buildBottomNavigationBar() {
       ),
     ],
     selectedItemColor: Colors.green,
+    onTap: (int index) {
+      // Adicione um switch para lidar com as diferentes seleções do BottomNavigationBar
+      switch (index) {
+        case 0:
+          Navigator.pushNamedAndRemoveUntil(
+              context, Routes.home, (route) => false);
+          break;
+        case 1:
+          Navigator.pushReplacementNamed(context, Routes.promocoes);
+          break;
+        // Adicione mais casos conforme necessário para outros itens
+      }
+    },
   );
 }

@@ -1,6 +1,6 @@
 import 'package:estagio_projeto/main.dart';
 import 'package:flutter/material.dart';
-import 'rectangle.dart';
+
 import 'widgets.dart';
 
 class Home extends StatefulWidget {
