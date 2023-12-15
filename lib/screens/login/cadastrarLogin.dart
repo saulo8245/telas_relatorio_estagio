@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'cadastrarLogin.dart';
-
-class PageLogin extends StatelessWidget {
+class PageCadastro extends StatelessWidget {
+  final _nomeController = TextEditingController();
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
+  final _confirmarSenhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class PageLogin extends StatelessWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.green,
+              Colors.blue,
               Colors.black54,
             ],
           ),
@@ -31,12 +31,26 @@ class PageLogin extends StatelessWidget {
           children: [
             const SizedBox(height: 30),
             const Text(
-              "Digite os dados de acesso nos campos abaixo",
+              "Digite os dados de cadastro nos campos abaixo",
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             const SizedBox(height: 30),
+            CupertinoTextField(
+              controller: _nomeController,
+              cursorColor: Colors.pinkAccent,
+              padding: const EdgeInsets.all(15),
+              placeholder: "Digite o seu Nome",
+              placeholderStyle: TextStyle(color: Colors.white70, fontSize: 14),
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(15),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
             CupertinoTextField(
               controller: _emailController,
               cursorColor: Colors.pinkAccent,
@@ -66,6 +80,22 @@ class PageLogin extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 10),
+            CupertinoTextField(
+              controller: _confirmarSenhaController,
+              padding: const EdgeInsets.all(15),
+              cursorColor: Colors.pinkAccent,
+              placeholder: "Confirme sua senha",
+              obscureText: true,
+              placeholderStyle: TextStyle(color: Colors.white70, fontSize: 14),
+              style: TextStyle(color: Colors.white, fontSize: 14),
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(7),
+                ),
+              ),
+            ),
             const SizedBox(height: 30),
             SizedBox(
               width: double.infinity,
@@ -79,7 +109,7 @@ class PageLogin extends StatelessWidget {
                 child: CupertinoButton(
                   padding: const EdgeInsets.all(17),
                   child: const Text(
-                    "Acessar",
+                    "Cadastrar",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
@@ -101,15 +131,15 @@ class PageLogin extends StatelessWidget {
               ),
               child: CupertinoButton(
                 child: const Text(
-                  "Crie sua conta",
+                  "Já tem uma conta? Faça login",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
                       fontWeight: FontWeight.w600),
                 ),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PageCadastro()));
+                  // Navegar para a tela de login
+                  Navigator.pushReplacementNamed(context, '/login');
                 },
               ),
             ),
